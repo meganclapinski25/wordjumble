@@ -11,12 +11,28 @@ word_dict = [
 
 # letter postiions for larger word
 
-secret_word = random.choice(word_dict)
+# secret_word = random.choice(word_dict)
 
-jumbled = list(secret_word)
+# jumbled = list(secret_word)
     
-secret_word = random.choice(word_dict)
-jumbled = list(secret_word)
-random.shuffle(jumbled)
+# secret_word = random.choice(word_dict)
+# jumbled = list(secret_word)
+# random.shuffle(jumbled)
 
-print("Jumbled Word List: ", jumbled)
+# jumbled = ''.join(jumbled)
+
+# print("Jumbled Word List: ", jumbled)
+
+def jumble_word(word_list):
+    jumbled_words = []
+    for word in word_list:
+        jumbled = list(word)
+        random.shuffle(jumbled)
+        jumbled_words.append(''.join(jumbled))
+    return jumbled_words
+
+
+jumbled_words = jumble_word(word_dict)
+
+jumbled_words = jumble_word(word_dict)
+print("Jumbled Words:", jumbled_words)       
