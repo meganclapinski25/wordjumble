@@ -9,6 +9,13 @@ word_dict = [
     "cousin"
 ]
 
+letter_postitions = [
+    [3,5],
+    [1,2,4],
+    [5],
+    [4,5]
+]
+
 # letter postiions for larger word
 
 # secret_word = random.choice(word_dict)
@@ -23,16 +30,34 @@ word_dict = [
 
 # print("Jumbled Word List: ", jumbled)
 
-def jumble_word(word_list):
+def jumble_word(word_list, letter_list):
     jumbled_words = []
-    for word in word_list:
+    final_letters = []
+    
+    # jumble all the words 
+    for word, positions in word_list, letter_list:
         jumbled = list(word)
         random.shuffle(jumbled)
         jumbled_words.append(''.join(jumbled))
-    return jumbled_words
+        
+    # Extract the letters at the correct postions 
+    
+        extracted_letters = [word[pos-1] for pos in positions]
+        final_letters.append(extracted_letters)
+    
+    return jumbled_words, final_letters
+
+    
 
 
-jumbled_words = jumble_word(word_dict)
+jumbled_words, final_letters = jumble_word(word_dict, letter_postitions)
 
-jumbled_words = jumble_word(word_dict)
-print("Jumbled Words:", jumbled_words)       
+# Print the jumbled words
+print("Jumbled Words:")
+for word in jumbled_words:
+    print(word)
+
+# Print the letters for the final puzzle
+print("\nLetters for the final puzzle:")
+for letters in final_letters:
+    print("".join(letters))
