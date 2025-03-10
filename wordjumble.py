@@ -66,16 +66,31 @@ def jumble_game():
         print(f"Jumbled Word: {jumbled_word}")
         guess = input("Your guess:").strip()
         
-        if guess == word_dict[i]:
+        if guess == word_dict[words_solved]:
             print("Correct you have solved the word")
             correct_letters.extend(correct_positions)
             words_solved +=1 
         else:
             print("That is not correct, try again")
             
-        print("Game Over, you have solved all the jumbled words")
-        print("Here is the final puzzle:")
-        print("".join(correct_letters))
+    print("Game Over, you have solved all the jumbled words")
+    print("Here is the final puzzle:")
+    print("".join(correct_letters))
+
+
+    final_puzzle(correct_letters)
+    
+def final_puzzle(correct_letters):
+    final_puzzle_answer = ''.join(correct_letters)
+    
+    formatted = f"{final_puzzle_answer[:2]}-{final_puzzle_answer[2:]}"
+    print(f"Final Puzzle: {formatted}")
+    
+    final_guess = input("Try and solve the last piece to the puzzle, guess the phrase with the final letters:")
+    if final_guess.lower() == "in-stinks":
+        print("Correct, Game Over")
+    else:
+        print("The correct phrase was In-Stinks")
 
 jumble_game()
 # print("Jumbled Words:")
