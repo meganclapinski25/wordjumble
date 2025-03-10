@@ -30,7 +30,7 @@ letter_postitions = [
 
 # print("Jumbled Word List: ", jumbled)
 
-def jumble_word(word_list, letter_list):
+def word_jumble(word_list, letter_list):
     jumbled_words = []
     final_letters = []
     
@@ -52,15 +52,37 @@ def jumble_word(word_list, letter_list):
     return jumbled_words, final_letters
 
     
+def jumble_game():
+    jumbled_words, final_letters = word_jumble(word_dict, letter_postitions)
+    
+    correct_letters = []
+    
+    words_solved = 0
+    
+    while words_solved < len(jumbled_words):
+        jumbled_word = jumbled_words[words_solved]
+        correct_positions = final_letters[words_solved]
+        
+        print(f"Jumbled Word: {jumbled_word}")
+        guess = input("Your guess:").strip()
+        
+        if guess == word_dict[i]:
+            print("Correct you have solved the word")
+            correct_letters.extend(correct_positions)
+            words_solved +=1 
+        else:
+            print("That is not correct, try again")
+            
+        print("Game Over, you have solved all the jumbled words")
+        print("Here is the final puzzle:")
+        print("".join(correct_letters))
 
+jumble_game()
+# print("Jumbled Words:")
+# for word in jumbled_words:
+#     print(word)
 
-jumbled_words, final_letters = jumble_word(word_dict, letter_postitions)
-
-print("Jumbled Words:")
-for word in jumbled_words:
-    print(word)
-
-# Print the letters for the final puzzle
-print("\nLetters for the final puzzle:")
-for letters in final_letters:
-    print("".join(letters))
+# # Print the letters for the final puzzle
+# print("\nLetters for the final puzzle:")
+# for letters in final_letters:
+#     print("".join(letters))
