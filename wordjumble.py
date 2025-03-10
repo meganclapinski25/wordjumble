@@ -35,7 +35,11 @@ def jumble_word(word_list, letter_list):
     final_letters = []
     
     # jumble all the words 
-    for word, positions in word_list, letter_list:
+    for i in range(len(word_list)):
+        word = word_list[i]
+        positions = letter_list[i]
+        
+        
         jumbled = list(word)
         random.shuffle(jumbled)
         jumbled_words.append(''.join(jumbled))
@@ -52,7 +56,6 @@ def jumble_word(word_list, letter_list):
 
 jumbled_words, final_letters = jumble_word(word_dict, letter_postitions)
 
-# Print the jumbled words
 print("Jumbled Words:")
 for word in jumbled_words:
     print(word)
